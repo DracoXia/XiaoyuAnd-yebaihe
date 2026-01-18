@@ -41,7 +41,6 @@ const App: React.FC = () => {
   };
 
   const handleSessionEnd = () => {
-    // Smooth fade out: 5 seconds total (50 steps of 100ms each)
     let currentVol = volume;
     const fadeInterval = setInterval(() => {
       currentVol -= 0.02;
@@ -84,7 +83,7 @@ const App: React.FC = () => {
   );
 
   const renderImmersion = () => (
-    <div className="absolute inset-0 z-30 overflow-y-auto no-scrollbar animate-fade-in flex flex-col">
+    <div className="absolute inset-0 z-30 overflow-hidden animate-fade-in flex flex-col h-full">
       {isAudioLoading && isPlaying && !audioError && (
         <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/40 backdrop-blur-sm pointer-events-none animate-fade-in">
           <Loader2 className="w-5 h-5 text-white/20 animate-spin mb-4" />
@@ -92,16 +91,16 @@ const App: React.FC = () => {
         </div>
       )}
 
-      {/* Container adjusted to push text down from top edge (pt-24 and justify-center) */}
-      <div className="flex-grow flex flex-col justify-center items-center relative p-8 pt-[12vh] min-h-[90vh]">
+      {/* Optimized for mobile browser toolbars: reduced vertical padding and spacing */}
+      <div className="flex-grow flex flex-col justify-center items-center relative p-6 pt-[2vh]">
         <div className="max-w-md w-full text-center flex flex-col items-center">
           {(TEXT_CONTENT.immersion as string[]).map((line, idx) => {
-            if (line === "") return <div key={idx} className="h-8 md:h-10" />; 
+            if (line === "") return <div key={idx} className="h-3 md:h-4" />; 
             return (
               <p 
                 key={idx}
-                className="text-lg md:text-xl font-serif text-white leading-relaxed tracking-[0.25em] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] opacity-95 animate-float my-3" 
-                style={{ animationDelay: `${idx * 0.5}s`, animationDuration: '14s' }}
+                className="text-lg md:text-xl font-serif text-white leading-relaxed tracking-[0.2em] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] opacity-95 animate-float my-1.5 md:my-2" 
+                style={{ animationDelay: `${idx * 0.4}s`, animationDuration: '14s' }}
               >
                 {line}
               </p>
@@ -110,13 +109,13 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <div className="pb-16 flex justify-center w-full opacity-0 animate-fade-in" style={{ animationDelay: '3s', animationFillMode: 'forwards' }}>
+      <div className="pb-12 md:pb-14 flex justify-center w-full opacity-0 animate-fade-in" style={{ animationDelay: '2.5s', animationFillMode: 'forwards' }}>
          <button 
            onClick={() => setShowSafetyModal(true)}
-           className="flex flex-col items-center space-y-4 group cursor-pointer transition-opacity duration-700 opacity-60 hover:opacity-100"
+           className="flex flex-col items-center space-y-2 group cursor-pointer transition-opacity duration-700 opacity-60 hover:opacity-100"
          >
-           <Leaf strokeWidth={1} className="w-5 h-5 text-white group-hover:rotate-12 transition-transform duration-1000" />
-           <span className="text-[10px] font-serif text-white tracking-[0.4em] uppercase">
+           <Leaf strokeWidth={1} className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-1000" />
+           <span className="text-[9px] font-serif text-white tracking-[0.4em] uppercase">
              {TEXT_CONTENT.product.entryLabel}
            </span>
          </button>
@@ -171,7 +170,7 @@ const App: React.FC = () => {
         className={`absolute inset-0 z-0 transition-opacity duration-[2500ms] bg-cover bg-center bg-no-repeat ${
           phase !== AppPhase.LANDING ? 'opacity-100' : 'opacity-0'
         }`}
-        style={{ backgroundImage: "url('https://xiaoyuand2026-1252955517.cos.ap-guangzhou.myqcloud.com/BG%20%281%29.png')" }}
+        style={{ backgroundImage: "url('https://xiaoyuand2026-1252955517.cos.ap-guangzhou.myqcloud.com/BG-Yebaihe.png')" }}
       >
         <div className="absolute inset-0 bg-black/30" />
       </div>
@@ -188,7 +187,7 @@ const App: React.FC = () => {
         onError={() => setAudioError(true)}
       />
 
-      <div className={`absolute top-10 right-10 z-50 transition-opacity duration-1000 ${phase === AppPhase.IMMERSION ? 'opacity-40 hover:opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`absolute top-6 right-6 z-50 transition-opacity duration-1000 ${phase === AppPhase.IMMERSION ? 'opacity-40 hover:opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <button onClick={toggleAudio} className="p-3">
           {isPlaying ? (
             <Volume2 strokeWidth={1} className="w-5 h-5 text-white" />
@@ -208,25 +207,25 @@ const App: React.FC = () => {
               className="fixed inset-0 bg-black/60 backdrop-blur-[6px] z-[60] animate-fade-in"
               onClick={() => setShowSafetyModal(false)}
           />
-          <div className="fixed bottom-0 left-0 right-0 z-[70] bg-zen-white rounded-t-[3rem] shadow-2xl p-12 transform animate-fade-in max-h-[85vh] overflow-y-auto no-scrollbar">
-            <div className="flex justify-end mb-4">
+          <div className="fixed bottom-0 left-0 right-0 z-[70] bg-zen-white rounded-t-[3rem] shadow-2xl p-10 transform animate-fade-in max-h-[85vh] overflow-y-auto no-scrollbar">
+            <div className="flex justify-end mb-2">
               <button onClick={() => setShowSafetyModal(false)} className="p-2 opacity-40 hover:opacity-100 transition-transform hover:scale-110"><X className="w-6 h-6 text-ink-gray" /></button>
             </div>
-            <h3 className="text-center font-serif text-xl text-ink-gray tracking-[0.3em] mb-12">
+            <h3 className="text-center font-serif text-xl text-ink-gray tracking-[0.3em] mb-10">
               {TEXT_CONTENT.product.modal.title}
             </h3>
-            <p className="font-serif text-base text-ink-gray leading-loose mb-10 text-justify opacity-80">
+            <p className="font-serif text-sm md:text-base text-ink-gray leading-loose mb-8 text-justify opacity-80">
               {TEXT_CONTENT.product.modal.origin.part1} <b className="text-ink-gray">{TEXT_CONTENT.product.modal.origin.highlight}</b> {TEXT_CONTENT.product.modal.origin.part2}
             </p>
-            <div className="space-y-5 mb-14">
+            <div className="space-y-4 mb-10">
               {TEXT_CONTENT.product.modal.ingredients.list.map((item, idx) => (
                 <div key={idx} className="flex justify-between items-baseline border-b border-zen-gray/50 pb-3">
                   <span className="text-base font-serif text-ink-gray">{item.name}</span>
-                  <span className="text-xs font-serif text-ink-light italic tracking-wider">{item.desc}</span>
+                  <span className="text-[10px] font-serif text-ink-light italic tracking-wider">{item.desc}</span>
                 </div>
               ))}
             </div>
-            <p className="text-[11px] text-center text-ink-light italic tracking-[0.1em] opacity-60">
+            <p className="text-[10px] text-center text-ink-light italic tracking-[0.1em] opacity-60 pb-4">
               {TEXT_CONTENT.product.modal.footer}
             </p>
           </div>

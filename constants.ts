@@ -1,21 +1,21 @@
 // 使用腾讯云 COS 加载音频资源
-export const DEFAULT_AUDIO_URL = "https://xiaoyuand2026-1252955517.cos.ap-guangzhou.myqcloud.com/ShanCha_Mp3.mp3";
+export const DEFAULT_AUDIO_URL = "https://xiaoyuand2026-1252955517.cos.ap-guangzhou.myqcloud.com/yebaihe.mp3";
 export const TRANSITION_AUDIO_URL = "https://xiaoyuand2026-1252955517.cos.ap-guangzhou.myqcloud.com/female-sigh-450446.mp3";
 
 export const TEXT_CONTENT = {
-  landing: "推门，见山色",
+  landing: "入深涧，寻百合",
   immersion: [
-    "庭院无声",
-    "暖阳在白瓷杯盏间",
-    "打了个盹",
+    "武夷深涧",
+    "野百合在丹霞石缝间",
+    "兀自盛放",
     "", // Spacer
-    "浮动的茶烟",
-    "唤醒了远方的山岚",
-    "在清旷的留白里",
+    "清冽的幽香重塑了",
+    "山谷里的那场旧梦",
+    "在寂静中生长",
     "", // Spacer
-    "此间坐久",
-    "见山色",
-    "见清欢"
+    "空谷驻足",
+    "见自己",
+    "见天地"
   ],
   product: {
     entryLabel: "溯源 · 安心",
@@ -31,10 +31,8 @@ export const TEXT_CONTENT = {
       ingredients: {
         title: "[ 甄选 · 自然原材 ]",
         list: [
-          { name: "白花银针", desc: "毫香蜜韵 · 茶骨" },
-          { name: "山茶花", desc: "清雅幽寒 · 去燥" },
-          { name: "白兰花", desc: "灵动鲜活 ·提神" },
-          { name: "雪松", desc: "沉稳苍古 · 定心" }
+          { name: "甘肃百合", desc: "清甜润泽 · 养阴安神" },
+          { name: "夜花茉莉", desc: "幽香冷冽 · 疏肝解郁" }
         ]
       },
       reminder: {
@@ -46,22 +44,19 @@ export const TEXT_CONTENT = {
   },
   ending: {
     title: "制香师说",
-    quote: "「香为茶之神，茶为香之骨。」",
+    quote: "「野百合，生于幽处，不以无人而不芳。」",
     body: [
-      "曾经营茶楼数载",
-      "深感一泡茶的生命转瞬即逝",
-      "遂取“菜茶”原生种之野气",
-      "合白兰之清芬",
-      "雪松之坚韧",
+      "我曾见它在绝壁上孤傲生长",
+      "那是生命在最贫瘠处开出的花",
+      "我以甘肃百合的温润与苏合香的深沉交织",
+      "试图复刻那份不被定义的记忆",
       "",
-      "苏轼有云",
-      "“焚香引幽步，酌茗开净筵”",
+      "正如《香乘》所云",
+      "“气韵生动，方为上乘”",
       "",
-      "我不愿这支香",
-      "只是室内的一种味道",
-      "我希望它是一场",
-      "『对花独酌，焚香默坐』",
-      "的基本归心"
+      "哪怕只有十分钟",
+      "也希望这缕香能陪你走过",
+      "心中的那段无名山谷"
     ],
     cta: "加入小屿和香的社群"
   }
